@@ -1,1 +1,69 @@
-# Stiff-P
+import numpy as np
+import matplotlib.pyplot as plt
+from tkinter import filedialog
+import pandas as pd
+import os
+
+# Global variables
+global mmm, a1, a2, a3, a4, a5, alln2, n
+
+# Custom functions (you'll need to implement these separately)
+def research12(mmm):
+    # Implement the logic of research12 function here
+    pass
+
+def research13(mmm):
+    # Implement the logic of research13 function here
+    pass
+
+def research14(a2):
+    # Implement the logic of research14 function here
+    pass
+
+def reaserch16(mmm):
+    # Implement the logic of reaserch16 function here
+    pass
+
+def reaserch17(a4):
+    # Implement the logic of reaserch17 function here
+    pass
+
+def reaserch15(alln2, n):
+    # Implement the logic of reaserch15 function here
+    pass
+
+# Main script
+n = int(input('What is the original value? '))
+
+# File selection dialog
+file_path = filedialog.askopenfilename(filetypes=[("Excel files", "*.xls;*.xlsx")])
+input1 = pd.read_excel(file_path).values
+
+alln2 = np.zeros((11, n))  # Assuming 11 rows based on the MATLAB code
+
+for i in range(n):
+    mm = input1[:6, i]
+    mm1 = np.array([1, 1, 1, 2, 2, 2])
+    mmm = np.column_stack((mm, mm1))
+    
+    a1 = research12(mmm)  # size of front side
+    a2 = research13(mmm)  # different under with together
+    a3 = research14(a2)   # angle with under
+    a4 = reaserch16(mmm)
+    a5 = reaserch17(a4)
+    
+    alln2[:, i] = np.concatenate([np.array([a1]), a3[:, 0], a3[:, 1], a5[:, 0], a5[:, 1]])
+
+resultefinal = reaserch15(alln2, n)
+plt.plot(resultefinal)
+plt.show()
+
+# Write results to Excel
+df_alln2 = pd.DataFrame(alln2)
+df_resultefinal = pd.DataFrame(resultefinal)
+
+with pd.ExcelWriter(file_path, engine='openpyxl', mode='a') as writer:
+    df_alln2.to_excel(writer, sheet_name='b1', index=False, header=False)
+    df_resultefinal.to_excel(writer, sheet_name='resulte', index=False, header=False)
+
+print("Results have been written to the Excel file.")
