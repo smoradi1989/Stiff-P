@@ -1,0 +1,9 @@
+import numpy as np
+
+def research13(mmm):
+    dd = np.zeros((2, 2))
+    dd[0, 0] = abs(mmm[0, 0]) - abs(mmm[1, 0])
+    dd[1, 0] = abs(mmm[1, 0]) - abs(mmm[2, 0])
+    dd[0, 1] = abs(mmm[3, 0]) - abs(mmm[4, 0])
+    dd[1, 1] = abs(mmm[4, 0]) - abs(mmm[5, 0])
+    return dd.T
