@@ -1,0 +1,8 @@
+import numpy as np
+
+def research12(mmm):
+    dd = np.zeros(3)
+    dd[0] = abs(mmm[0, 0]) + mmm[3, 0]
+    dd[1] = abs(mmm[1, 0]) + mmm[4, 0]
+    dd[2] = abs(mmm[2, 0]) + mmm[5, 0]
+    return dd
