@@ -1,1 +1,11 @@
+import numpy as np
 
+def research15(alln2, n):
+    k = np.zeros(n)
+    
+    for i in range(n):
+        dd = alln2[:, 0] - alln2[:, i]
+        f = np.sum(dd[:13] ** 2)
+        k[i] = np.sqrt(f / 13)
+    
+    return k
